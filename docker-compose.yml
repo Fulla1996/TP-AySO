@@ -1,0 +1,36 @@
+services:
+  servidor:
+    build: ./servidor
+    container_name: servidor.com
+    networks:
+      - mi_red
+    
+  ejemplo:
+    build: ./servidor
+    container_name: ejemplo.com
+    networks:
+      - mi_red
+  web:
+    build: ./servidor
+    container_name: web.com
+    networks:
+      - mi_red
+    
+  dns:
+    build: ./dns
+    container_name: dns
+    networks:
+      - mi_red
+    depends_on:
+      - servidor
+  cliente:
+    build: ./cliente
+    container_name: cliente
+    networks:
+      - mi_red
+    depends_on:
+      - servidor
+  
+networks:
+  mi_red:
+    driver: bridge
