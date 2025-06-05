@@ -21,8 +21,6 @@ services:
     container_name: dns
     networks:
       - mi_red
-    depends_on:
-      - servidor
   cliente:
     build: ./cliente
     container_name: cliente
@@ -30,6 +28,9 @@ services:
       - mi_red
     depends_on:
       - servidor
+      - ejemplo
+      - web
+      - dns
   
 networks:
   mi_red:

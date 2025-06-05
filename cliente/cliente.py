@@ -4,7 +4,6 @@ import socket
 URL = input("Ingrese la url deseada: ")
 
 ip = requests.get("http://dns:5000/getip?url=" + URL)
-#ip = socket.gethostbyname(URL)
 
 if ip.status_code == 404:
     print("Servidor no encontrado")
